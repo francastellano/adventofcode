@@ -1,13 +1,9 @@
 import util.DataLoader
 
 
-def calc_result(path):
-    return 7
+def exercise1(path_file):
 
-
-def exercise1(path):
-
-    data = util.DataLoader.DataFile(path)
+    data = util.DataLoader.DataFile(path_file)
 
     data.load_basic_number_list()
     result = 0
@@ -21,7 +17,7 @@ def exercise1(path):
 
         previous_result = val
 
-    print (f"The final result is {result}")
+    print(f"The final result is {result}")
 
 
 path = "./2021/Day1/exercise1.data"
