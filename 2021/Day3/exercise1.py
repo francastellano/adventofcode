@@ -30,21 +30,18 @@ def accumulate (list_values):
     return position
 
 
-def cal_gamma_rate (list_positions):
+def cal_gamma_rate2 (list_positions):
+    return cal_generic_rate (list_positions, "0", "1")
+
+
+def cal_epsilon_rate2 (list_positions):
+    return cal_generic_rate (list_positions, "1", "0")
+
+
+def cal_generic_rate(list_positions, value_mayor, value_minor):
     value = ""
     for row in list_positions:
-        if list_positions[row]["0"] > list_positions[row]["1"]:
-            value = value + "0"
-        else:
-            value = value + "1"
-
-    return value
-
-
-def cal_epsilon_rate (list_positions):
-    value = ""
-    for row in list_positions:
-        if list_positions[row]["1"] > list_positions[row]["0"]:
+        if list_positions[row][value_mayor] > list_positions[row][value_minor]:
             value = value + "0"
         else:
             value = value + "1"
@@ -57,8 +54,8 @@ def main():
     list_values = get_data(path_file)
     list_values_computed = accumulate(list_values)
 
-    gama_rate = cal_gamma_rate(list_values_computed)
-    epsilon_rate = cal_epsilon_rate(list_values_computed)
+    gama_rate = cal_gamma_rate2(list_values_computed)
+    epsilon_rate = cal_epsilon_rate2(list_values_computed)
 
     decimal_gama_rate = int(gama_rate, 2)
     decimal_epsilon_rate = int(epsilon_rate, 2)
@@ -68,3 +65,5 @@ def main():
     print(decimal_gama_rate * decimal_epsilon_rate)
 
 main()
+
+# => 2035764
